@@ -28,7 +28,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <title>Login Page - {{ env('APP_NAME') }}</title>
     <link rel="apple-touch-icon" href="{{ asset('app-assets') }}/images/ico/apple-icon-120.html">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets') }}/images/rental/icon.png">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500&display=swap" rel="stylesheet">
@@ -82,6 +82,7 @@ License: You must have a valid license purchased only from themeforest(the above
     </div>
     <!-- END: Content-->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
 
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('app-assets') }}/vendors/js/vendors.min.js"></script>

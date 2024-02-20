@@ -15,11 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
+        $this->call(PlansSeeder::class);
         \App\Models\User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin.rental@rental.com',
+            'country_code'=>'AU',
+            'phone_no'=>'300 3456899',
+            'plan_id'=>1,
             'password' => Hash::make('password')
         ]);
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Category\CategoryController;
+use App\Http\Controllers\AuthenticateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 
@@ -18,6 +19,12 @@ Route::group([
     Route::get('/', function () {
         return redirect()->route('login.view');
     });
+
+    Route::controller(AuthenticateController::class)->group( function () {
+        Route::get('sign-up', 'signupForm')->name('sign.up');
+        Route::get('reload-captcha','reloadCaptcha')->name('captcha.reload');
+        Route::post('store-user','store')->name('user.store');
+    } );
 
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('cachew/flush', [DashboardController::class, 'cacheFlush'])->name('cache.flush');

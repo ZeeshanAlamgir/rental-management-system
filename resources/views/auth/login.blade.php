@@ -82,12 +82,14 @@
                             </div>
                         </div>
                         <div class="mb-1">
-                            <div class="form-check">
+                            <span>If you don't have account <a href="{{route('sign.up')}}">click here</a> to signup</span>
+
+                            {{-- <div class="form-check">
                                 <input id="remember" name="remember" type="hidden" value="0" />
                                 <input class="form-check-input" id="remember-me" name="remember" value="1"
                                     type="checkbox" tabindex="3" />
                                 <label class="form-check-label" for="remember-me"> Remember Me</label>
-                            </div>
+                            </div> --}}
                         </div>
                         <button class="btn btn-primary w-100" tabindex="4">Sign in</button>
                     </form>
