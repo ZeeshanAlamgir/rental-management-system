@@ -64,27 +64,27 @@ if (!function_exists('decryptParams')) {
     }
 }
 
-if(!function_exists('check_slug'))
-{
-    function checkSlug($model,$slug)
-    {
-        $slug_exists = $model::where([
-            ['deleted_at',null],
-            ['slug',$slug]
-            ])
-        ->count();
-        if($slug_exists>0)
-        {
-            $id = $model::where('deleted_at',null)->latest('created_at')->pluck('id')->first();
-            $slug = $slug.((int)++$id) ;
-        }
-        else
-        {
-            $slug = $slug;
-        }
-        return $slug;
-    }
-}
+// if(!function_exists('check_slug'))
+// {
+//     function checkSlug($model,$slug)
+//     {
+//         $slug_exists = $model::where([
+//             ['deleted_at',null],
+//             ['slug',$slug]
+//             ])
+//         ->count();
+//         if($slug_exists>0)
+//         {
+//             $id = $model::where('deleted_at',null)->latest('created_at')->pluck('id')->first();
+//             $slug = $slug.((int)++$id) ;
+//         }
+//         else
+//         {
+//             $slug = $slug;
+//         }
+//         return $slug;
+//     }
+// }
 
 // if (!function_exists('getSiteConfiguration')) {
 //     function getSiteConfiguration($site_id)
@@ -97,26 +97,26 @@ if(!function_exists('check_slug'))
 //     }
 // }
 
-if (!function_exists('getAllModels')) {
-    function getAllModels($path = null): array
-    {
-        $Modelpath = ($path ?? app_path()) . "/Models";
+// if (!function_exists('getAllModels')) {
+//     function getAllModels($path = null): array
+//     {
+//         $Modelpath = ($path ?? app_path()) . "/Models";
 
-        $out = [];
-        $results = scandir($Modelpath);
-        foreach ($results as $result) {
-            //			dd($results);
-            if ($result === '.' or $result === '..') continue;
-            $filename = $Modelpath . '/' . $result;
-            if (is_dir($filename)) {
-                $out = array_merge($out, getAllModels($filename));
-            } else {
-                $out[] = substr($result, 0, -4);
-            }
-        }
-        return $out;
-    }
-}
+//         $out = [];
+//         $results = scandir($Modelpath);
+//         foreach ($results as $result) {
+//             //			dd($results);
+//             if ($result === '.' or $result === '..') continue;
+//             $filename = $Modelpath . '/' . $result;
+//             if (is_dir($filename)) {
+//                 $out = array_merge($out, getAllModels($filename));
+//             } else {
+//                 $out[] = substr($result, 0, -4);
+//             }
+//         }
+//         return $out;
+//     }
+// }
 
 if (!function_exists('getTrashedDataCount')) {
     function getTrashedDataCount()
@@ -440,3 +440,11 @@ if (!function_exists('editDateColumn')) {
 //         );
 //     }
 // }
+
+if( !function_exists( 'generateRandomNumbers' ) )
+{
+    function generateRandomNumbers ()
+    {
+        return rand( 1000, 9000 );
+    }
+}

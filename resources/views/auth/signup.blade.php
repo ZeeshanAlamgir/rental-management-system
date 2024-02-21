@@ -506,7 +506,7 @@
                                                 </button>
                                             </div>
                                             <div class="col-md-9">
-                                                <input id="captcha" type="text" class="form-control"
+                                                <input type="text" id="captcha" class="form-control"
                                                     placeholder="Enter Captcha" name="captcha">
                                                 @error('captcha')
                                                     <ul>
@@ -514,7 +514,7 @@
                                                     </ul>
                                                 @enderror
                                             </div>
-
+                                            {{-- <div class="g-recaptcha" data-sitekey={{config('services.recaptcha.key')}}></div> --}}
                                         </div>
 
                                     </div>
@@ -644,15 +644,21 @@
 @endsection
 @section('my-script')
     <script type="text/javascript">
+    function reloadCaptcha () {
         $('#reload').click(function() {
             $.ajax({
                 type: 'GET',
                 url: 'reload-captcha',
                 success: function(data) {
+                    $('#captcha').val('');
                     $(".captcha span").html(data.captcha);
                 }
             });
         });
+    }
+    $(document).ready(function () {
+        reloadCaptcha();
+    });
         var currentTab = 0;
          // Current tab is set to be the first tab (0)
         showTab(currentTab); // Display the current tab
@@ -726,6 +732,38 @@
                     input.attr("type", "password");
                 }
             });
+
+            $(document).on('input','#captcha',function( event ) {
+                let value = event.target.value;
+                if( value.length == 2 ) {
+                    captchaVerification(value);
+                }
+            })
+
+            function captchaVerification( value ) {
+                console.log(value);
+                $.ajax({
+                    type: "GET",
+                    url: "{{route('captcha.verification')}}",
+                    data: {
+                        "captcha_value":value
+                    },
+                    dataType: "json",
+                    beforeSend: function() {
+                        toastr.info("Please wait captcha is checking...");
+                    },
+                    success: function (response) {
+                        console.log('response',response);
+                        if( response.status == 200) {
+                            toastr.success(response.message);
+                        }
+                        else {
+                            $('#reload').trigger('click');
+                            toastr.error(response.message);
+                        }
+                    }
+                });
+            }
 
 
     </script>

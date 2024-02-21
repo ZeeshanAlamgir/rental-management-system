@@ -44,6 +44,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets') }}/css/themes/dark-layout.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets') }}/css/themes/bordered-layout.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets') }}/css/themes/semi-dark-layout.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css"
@@ -82,6 +83,7 @@ License: You must have a valid license purchased only from themeforest(the above
     </div>
     <!-- END: Content-->
 
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
 
     <!-- BEGIN: Vendor JS-->
@@ -111,6 +113,8 @@ License: You must have a valid license purchased only from themeforest(the above
             }
         })
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     @yield('my-script')
 </body>
 <!-- END: Body-->

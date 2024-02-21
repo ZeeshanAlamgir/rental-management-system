@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\AuthenticateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Models\User;
+use App\Notifications\SendOTPNotification;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,7 @@ Route::group([
 
     Route::controller(AuthenticateController::class)->group( function () {
         Route::get('sign-up', 'signupForm')->name('sign.up');
+        Route::get('captcha-verification','captchaVerification')->name('captcha.verification');
         Route::get('reload-captcha','reloadCaptcha')->name('captcha.reload');
         Route::post('store-user','store')->name('user.store');
     } );
@@ -37,4 +40,8 @@ Route::group([
         Route::get('details','categoryDetails')->name('category.details');
         Route::get('delete', 'delete')->name('category.delete');
     });
+});
+
+Route::get('send',function(){
+    User::find(1)->notify(new SendOTPNotification());
 });

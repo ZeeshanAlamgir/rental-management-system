@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('name',100);
             $table->string('email',200)->unique();
             $table->string('country_code',5);
-            $table->string('phone_no',50);
+            $table->string('phone_no',50)->nullable();
+            $table->string('role',50)->nullable();
+            $table->string('otp',5)->nullable();
             $table->foreignId('plan_id')->constrained();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

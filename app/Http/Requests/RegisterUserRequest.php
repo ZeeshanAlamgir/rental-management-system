@@ -28,8 +28,7 @@ class RegisterUserRequest extends FormRequest
             'email' => 'required|email|unique:users,email',
             'country_code' => 'required',
             'phone_no' => 'required',
-            'plan_id' => 'required|exists:plans,id',
-            'captcha' => 'required|captcha'
+            'plan_id' => 'required|exists:plans,id'
         ];
     }
 

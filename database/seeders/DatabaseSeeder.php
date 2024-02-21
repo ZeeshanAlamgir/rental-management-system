@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,6 +23,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin.rental@rental.com',
             'country_code'=>'AU',
             'phone_no'=>'300 3456899',
+            'role'=>User::CUSTOMER,
             'plan_id'=>1,
             'password' => Hash::make('password')
         ]);
