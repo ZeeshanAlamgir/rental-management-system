@@ -198,7 +198,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
-
+        Stevebauman\Location\LocationServiceProvider::class
     ],
 
     /*
@@ -215,6 +215,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'Location'=>'Stevebauman\Location\Facades\Location'
     ])->toArray(),
 
 ];

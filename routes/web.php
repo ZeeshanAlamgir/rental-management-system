@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Models\User;
 use App\Notifications\SendOTPNotification;
+use GuzzleHttp\Client;
+use Illuminate\Http\Request;
+use Stevebauman\Location\Facades\Location;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +47,10 @@ Route::group([
 
 Route::get('send',function(){
     User::find(1)->notify(new SendOTPNotification());
+});
+
+Route::get('location',function(Request $request){
+    // dd($_SERVER['REMOTE_ADDR']);
+    // dd(Location::get());
+
 });

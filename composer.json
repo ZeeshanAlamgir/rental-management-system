@@ -7,12 +7,14 @@
     "require": {
         "php": "^8.0.2",
         "diglactic/laravel-breadcrumbs": "^7.2",
-        "guzzlehttp/guzzle": "^7.2",
+        "geoip2/geoip2": "^2.13",
+        "guzzlehttp/guzzle": "^7.8",
         "laravel/fortify": "^1.13",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "mews/captcha": "^3.3",
+        "stevebauman/location": "^7.1",
         "yajra/laravel-datatables": "^9.0",
         "yajra/laravel-datatables-oracle": "^10.0"
     },

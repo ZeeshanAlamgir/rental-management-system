@@ -42,8 +42,6 @@ class RegisterUserRequest extends FormRequest
             'email.unique' => 'The email address is already in use.',
             'plan_id.required' => 'The plan is required.',
             'plan_id.exists' => 'The plan is not exists.',
-            'captcha.required' => 'Captcha is required.',
-            'captcha.captcha' => 'Invalid Captcha.',
         ];
     }
 }
