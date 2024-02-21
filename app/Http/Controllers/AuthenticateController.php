@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterUserRequest;
 use App\Models\Plan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,6 +18,7 @@ class AuthenticateController extends Controller
 
     public function store ( RegisterUserRequest $request )
     {
+        $user = new User();
         dd($request->all());
     }
 
