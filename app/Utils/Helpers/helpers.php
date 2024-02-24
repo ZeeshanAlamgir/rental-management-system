@@ -4,12 +4,13 @@ use App\Models\{
     AdditionalCost,
     SiteConfigration,
     Type,
+    User,
     UserBatch,
 };
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\{Collection};
-use Illuminate\Support\Facades\{Crypt, File};
+use Illuminate\Support\Facades\{Crypt, File, Hash};
 
 // if (!function_exists('filter_strip_tags')) {
 
@@ -407,44 +408,60 @@ if (!function_exists('editDateColumn')) {
 //     }
 // }
 
-// if (!function_exists('apiErrorResponse')) {
-//     function apiErrorResponse($message = 'data not found', $key = 'error')
-//     {
-//         return response()->json(
-//             [
-//                 'status' => false,
-//                 'message' => [
-//                     $key => $message,
-//                 ],
-//                 'data' => null,
-//                 'stauts_code' => '200'
-//             ],
-//             200
-//         );
-//     }
-// }
+if (!function_exists('apiErrorResponse')) {
+    function apiErrorResponse($message = 'data not found', $status_code = null, $key = 'error', $data = null,)
+    {
+        return response()->json(
+            [
+                'status' => false,
+                'message' => $message,
+                'data' => null,
+                'status_code' => !is_null($status_code) ? $status_code : 400
+            ]
+        );
+    }
+}
 
-// if (!function_exists('apiSuccessResponse')) {
-//     function apiSuccessResponse($data = null, $message = 'data found', $key = 'success')
-//     {
-//         return response()->json(
-//             [
-//                 'status' => true,
-//                 'message' => [
-//                     $key => $message,
-//                 ],
-//                 'data' => $data,
-//                 'stauts_code' => '200'
-//             ],
-//             200
-//         );
-//     }
-// }
+if (!function_exists('apiSuccessResponse')) {
+    function apiSuccessResponse($message = null, $data = null, $key = 'success')
+    {
+        return response()->json(
+            [
+                'status' => true,
+                'message' => !is_null($message) ? $message : "data found",
+                'data' => $data,
+                'status_code' => '200'
+            ]
+        );
+    }
+}
 
 if( !function_exists( 'generateRandomNumbers' ) )
 {
     function generateRandomNumbers ()
     {
         return rand( 1000, 9000 );
+    }
+}
+
+if( !function_exists('setUserCookie') )
+{
+    function setUserCookie( $key, $value, $duration )
+    {
+        return setcookie($key,$value, time() + $duration, "/");
+    }
+}
+
+if( !function_exists('resetPassword') )
+{
+    function resetPassword ( $email, $password )
+    {
+        // $email = $request->input('email');
+        // $password = $request->input('password');
+        // $confirm_password = $request->input('confirm_password');
+
+        $user = User::whereEmail($email)->first();
+        $user->password = Hash::make($password);
+        return $user->save() ? true : false;
     }
 }

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,17 +15,14 @@
 
     We've received your login request. To proceed, please use the following OTP for <br> authentication: <br><br>
 
-    One-Time Password (OTP): 4284 <br>
+    One-Time Password (OTP): <b>{{$user->otp}}</b> <br>
 
     Your Basic Details: <br>
-    Name: Zeeshan Alamgir <br>
-    Email: zeeshanalamgir1998@gmail.com <br>
-    Code: AU <br>
-    Phone number: 3109922489 <br>
-    Your Plan: Standard <br>
-    Login Details: <br>
-    IP Address: 2400:adcc:100:6d00:200d:9260:5a8e:d925 <br>
-    Location: Peshawar Khyber Pakhtunkhwa PK <br><br>
+    Name: <b>{{$user->name}}</b> <br>
+    Email: <b>{{$user->email}}</b> <br>
+    Code: <b>{{$user->country_code}}</b> <br>
+    Phone number: <b>{{$user->phone_no}}</b> <br>
+    Your Plan: <b>{{$user?->userPlan?->plan}}</b> <br>
 
     If you didn't initiate this login request, please ignore this email. For any concerns, <br> please contact our support executive. <br><br>
 

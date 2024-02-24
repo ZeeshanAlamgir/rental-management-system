@@ -53,74 +53,72 @@
             <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                     <h2 class="card-title fw-bold mb-1">Welcome to {{ env('APP_NAME') }}! 👋</h2>
-                    <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
+                    <p class="card-text mb-2">Please enter Email to Reset Password</p>
                     <div class="">
                         {{ view('app.layout.alerts') }}
                     </div>
-                    <form class="auth-login-form mt-2" action="{{ route('login.post') }}" method="POST">
+                    <form action="#" id="forgot-password-form">
                         @csrf
+
                         <div class="mb-1">
                             <label class="form-label" for="login-email">Email</label>
                             <input class="form-control form-control-lg" id="email" type="text" name="email"
                                 placeholder="john@example.com" aria-describedby="login-email" autofocus=""
                                 tabindex="1" />
                         </div>
-                        <div class="mb-1">
-                            <div class="d-flex justify-content-between">
-                                <label class="form-label" for="login-password">Password</label>
-                                {{-- <a href="auth-forgot-password-cover.html"><small>
-                                        Forgot Password?</small>
-                                </a> --}}
-                            </div>
-                            <div class="input-group input-group-merge form-password-toggle">
-                                <input class="form-control form-control-lg form-control-merge" id="login-password"
-                                    type="password" name="password" placeholder="············"
-                                    aria-describedby="login-password" tabindex="2" />
-                                <span class="input-group-text cursor-pointer">
-                                    <i data-feather="eye"></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <a href="{{ route('forgot.password.form') }}" class="forgot-password">
-                                Forgot Password
-                            </a>
-                            <a href="{{route('sign.up')}}">Signup</a>
-                            {{-- <span>If you don't have account <a href="{{route('sign.up')}}">click here</a> to signup</span> --}}
-                        </div>
-                        {{-- <div class="forgot-password-div">
-                            <a href="{{ route('forgot.password.form') }}" class="forgot-password">
-                                Forgot Password
-                            </a>
-                        </div> --}}
-                        <button class="btn btn-primary w-100" tabindex="4">Sign in</button>
+                        {{-- <input class="btn btn-primary w-100" type="submit" value="Send" id="forgot-password-btn"> --}}
+
+                        <button class="btn btn-primary w-100" id="forgot-password-btn" tabindex="4">Reset</button>
                     </form>
-                    {{-- <p class="text-center mt-2">
-                        <span>New on our platform?</span>
-                        <a href="auth-register-cover.html">
-                            <span>&nbsp;Create an account</span>
-                        </a>
-                    </p> --}}
-                    {{-- <div class="divider my-2">
-                        <div class="divider-text">or</div>
-                    </div>
-                    <div class="auth-footer-btn d-flex justify-content-center">
-                        <a class="btn btn-facebook" href="#">
-                            <i data-feather="facebook"></i>
-                        </a>
-                        <a class="btn btn-twitter white" href="#">
-                            <i data-feather="twitter"></i>
-                        </a>
-                        <a class="btn btn-google" href="#">
-                            <i data-feather="mail"></i>
-                        </a>
-                        <a class="btn btn-github" href="#">
-                            <i data-feather="github"></i>
-                        </a>
-                    </div> --}}
+
                 </div>
             </div>
-            <!-- /Login-->
         </div>
     </div>
+@endsection
+
+
+@section('my-script')
+
+    <script>
+        var regex = /\S+@\S+\.\S+/;
+        $( document ).on( 'click', '#forgot-password-btn', function ( e ) {
+            e.preventDefault();
+            let email = $('#email').val();
+            if( email == '' || email == undefined ) {
+                toastr.error( "Enter Email to Reset Password " );
+            }
+            else {
+                if(!regex.test(email)) {
+                    toastr.error( " Invalid Email " );
+                }
+                else {
+                    $.ajax({
+                        type: "GET",
+                        url: "{{ route('forgot.password.mail') }}",
+                        data: {
+                            email: email
+                        },
+                        beforeSend: function() {
+                            $('#forgot-password-btn').attr('disabled', true);
+                            toastr.info("Please wait a moment...");
+                        },
+                        success: function (response) {
+                            $('#forgot-password-btn').attr('disabled', false);
+                            if( !response.status ) {
+                                toastr.error( "Email Not Found" );
+                            }
+                            else {
+                                $('#email').val('');
+                                toastr.success( response.message.success );
+                            }
+                        },
+                        error:function(er){
+                            $('#forgot-password-btn').attr('disabled',false);
+                        }
+                    });
+                }
+            }
+        }  );
+    </script>
 @endsection

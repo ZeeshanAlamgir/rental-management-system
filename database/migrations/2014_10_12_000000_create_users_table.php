@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('otp',5)->nullable();
             $table->foreignId('plan_id')->constrained();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

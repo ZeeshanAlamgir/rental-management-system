@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class SendOTPNotification extends Notification implements ShouldQueue
+class ResetPasswordNotification extends Notification
 {
     use Queueable;
 
@@ -16,10 +16,10 @@ class SendOTPNotification extends Notification implements ShouldQueue
      *
      * @return void
      */
-    public $user = null;
-    public function __construct( $registered_user )
+    public $data = [];
+    public function __construct( $data = [] )
     {
-        $this->user = $registered_user;
+        $this->data = $data;
     }
 
     /**
@@ -42,11 +42,8 @@ class SendOTPNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject("Rentaaa Team")
-                    ->view('app.email.otp', ['user'=>$this->user]);
-                    // ->line('The introduction to the notification.')
-                    // ->action('Notification Action', url('/'))
-                    // ->line('Thank you for using our application!');
+            ->subject("Reset Your Password - Rentaaa Team")
+            ->markdown('app.forgot.mail',['tutor'=>$this->data['name'], 'token'=>$this->data['token'], 'email'=>$this->data['email'] ]);
     }
 
     /**
