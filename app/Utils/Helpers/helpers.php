@@ -456,12 +456,8 @@ if( !function_exists('resetPassword') )
 {
     function resetPassword ( $email, $password )
     {
-        // $email = $request->input('email');
-        // $password = $request->input('password');
-        // $confirm_password = $request->input('confirm_password');
-
         $user = User::whereEmail($email)->first();
         $user->password = Hash::make($password);
-        return $user->save() ? true : false;
+        return $user->save();
     }
 }

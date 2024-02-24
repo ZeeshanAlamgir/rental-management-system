@@ -44,7 +44,7 @@ class ForgotPasswordService implements ForgotPasswordInterface
 
     public function tokenValidation( $email, $token )
     {
-        $forgot_password = ForgotPassword::whereEmailAndToken($email,$token)->first();
+        $forgot_password = ForgotPassword::whereEmailAndToken($email,$token)->latest()->first();
         return $forgot_password;
     }
 }

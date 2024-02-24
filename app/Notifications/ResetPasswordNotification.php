@@ -43,7 +43,7 @@ class ResetPasswordNotification extends Notification
     {
         return (new MailMessage)
             ->subject("Reset Your Password - Rentaaa Team")
-            ->markdown('app.forgot.mail',['tutor'=>$this->data['name'], 'token'=>$this->data['token'], 'email'=>$this->data['email'] ]);
+            ->markdown('app.forgot.mail',['name'=>$this->data['name'], 'token'=>$this->data['token'], 'email'=>$this->data['email'] ]);
     }
 
     /**

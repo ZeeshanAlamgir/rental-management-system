@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegisterUserRequest;
 use App\Models\Plan;
 use App\Models\User;
 use App\Models\UserDetails;
@@ -10,9 +9,12 @@ use App\Notifications\SendOTPNotification;
 use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class AuthenticateController extends Controller
@@ -68,15 +70,6 @@ class AuthenticateController extends Controller
         return response()->json(['captcha'=> captcha_img()]);
     }
 
-    public function userData ( Request $request )
-    {
-        $userIp = $request->ip();
-        $client = new Client();
-        $response = $client->get("https://ipinfo.io/{$userIp}?token=0a50d0d8b5ad50");
-        $data = json_decode($response->getBody());
-        dd($data);
-    }
-
     public static function registerUser ( $data )
     {
         $check_user = User::checkEmail( $data['email'] );
@@ -98,7 +91,7 @@ class AuthenticateController extends Controller
         setUserCookie('otp', Crypt::encrypt($otp),3600);
         setUserCookie('email', $registered_user->email,3600);
         setUserCookie('phone_no', $registered_user->phone_no,3600);
-        // $registered_user->notify(new SendOTPNotification( $registered_user ));
+        $registered_user->notify(new SendOTPNotification( $registered_user ));
         return true;
     }
 
@@ -168,21 +161,29 @@ class AuthenticateController extends Controller
                 $user_details->country = $request['data']['country'] ;
                 $user_details->user_id = $user->id;
                 $user_details->save();
-                resetPassword( $_COOKIE['email'], $request->password );
+                resetPassword( $_COOKIE['email'], $request['data']['password'] );
                 return apiSuccessResponse("Account Created Sucessfully");
             }
             catch( Exception $ex )
             {
-                return \apiErrorResponse( $ex->getMessage() );
+                return apiErrorResponse( $ex->getMessage() );
             }
         }
     }
 
-    // public function savePassword ( Request $request )
-    // {
-    //     $email = $_COOKIE['email'];
-    //     resetPassword( $email, $request->password );
-    //     return apiSuccessResponse("Account Created Sucessully");
-    // }
-
+    public function login ( Request $request )
+    {
+        $credientials =
+        [
+            'email'  => $request['email'],
+            'password'  => $request['password'],
+        ];
+        if(Auth::attempt($credientials))
+            return redirect()->route('dashboard');
+        else
+        {
+            Session::flash( 'message-login', "Invalid Email or Password, try again." );
+            return redirect()->back()->withInput($request->only('email'));
+        }
+    }
 }

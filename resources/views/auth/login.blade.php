@@ -57,13 +57,23 @@
                     <div class="">
                         {{ view('app.layout.alerts') }}
                     </div>
-                    <form class="auth-login-form mt-2" action="{{ route('login.post') }}" method="POST">
+                    @if (Session::has('message-login'))
+                        <div class="alert alert-danger alert-dismissible " style="font-size:15px;">
+                            {{ Session::get('message-login') }}
+                        </div>
+                    @endif
+                    @if (Session::has('passwordChanged'))
+                        <div class="alert alert-success alert-dismissible " style="font-size:15px;">
+                            {{ Session::get('passwordChanged') }}
+                        </div>
+                    @endif
+                    <form class="auth-login-form mt-2" action="{{ route('user.login') }}" method="POST">
                         @csrf
                         <div class="mb-1">
                             <label class="form-label" for="login-email">Email</label>
                             <input class="form-control form-control-lg" id="email" type="text" name="email"
                                 placeholder="john@example.com" aria-describedby="login-email" autofocus=""
-                                tabindex="1" />
+                                tabindex="1" value="{{old('email')}}" />
                         </div>
                         <div class="mb-1">
                             <div class="d-flex justify-content-between">

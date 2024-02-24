@@ -230,7 +230,6 @@
                                         <span class="stepIndicator">User Information</span>
                                         <span class="stepIndicator">OTP Verification</span>
                                         <span class="stepIndicator">Onboarding Process</span>
-                                        <span class="stepIndicator">Password</span>
                                     </div>
                                     <!-- end step indicators -->
 
@@ -389,8 +388,6 @@
                                                     placeholder="Country" value="{{ old('acn') }}" id="country">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="step">
                                         <div class="row mt-2 mb-2">
                                             <div class="col-md-12">
                                                 <input type="password" id="password-field" placeholder="Password"
@@ -399,14 +396,6 @@
                                                     class="fa fa-fw fa-eye field-icon toggle-password">
                                                 </span>
                                             </div>
-                                            {{-- <div class="col-md-6">
-                                                <input type="password" id="confirm-password-field"
-                                                    placeholder="Confirm Password" oninput="this.className = ''"
-                                                    name="password">
-                                                <span confirm_toggle="#password-field"
-                                                    class="fa fa-fw fa-eye field-icon toggle-confirm-password">
-                                                </span>
-                                            </div> --}}
                                         </div>
                                     </div>
 
@@ -535,7 +524,7 @@
                 },
                 dataType: "json",
                 beforeSend: function() {
-                    $('#nextBtn').attr('disabled',true);
+                    // $('#nextBtn').attr('disabled',true);
                     toastr.info("Please wait captcha is checking...");
                 },
                 success: function(response) {
@@ -543,17 +532,17 @@
                         toastr.success(response.message);
                         n = 1;
                         fixStepIndicator(n);
-                        $('#nextBtn').attr('disabled',false);
+                        // $('#nextBtn').attr('disabled',false);
                     }
                     else if( response.status_code == 403 ) {
                         toastr.error(response.message);
-                        $('#nextBtn').attr('disabled',true);
+                        // $('#nextBtn').attr('disabled',true);
                     }
                     else {
                         response.message.forEach(msg => {
                             toastr.error(msg);
                         });
-                        $('#nextBtn').attr('disabled',true);
+                        // $('#nextBtn').attr('disabled',true);
                         $('#reload').trigger('click');
                     }
                 }
@@ -627,9 +616,7 @@
                         toastr.success(response.message);
                         window.location.href = "{{route('login.view')}}";
                     }
-                    else {
-                        toastr.error("Something went wrong");
-                    }
+
                 }
             });
         });

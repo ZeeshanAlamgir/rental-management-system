@@ -1,214 +1,107 @@
 @extends('auth.layout')
-@section('custom-css')
-    <style>
-
-        ::selection {
-            background: rgba(26, 188, 156, 0.3);
-        }
-
-        .main-container {
-            max-width: 440px;
-            padding: 0 20px;
-            margin-top: 5%;
-            /* margin: 170px auto; */
-        }
-
-        .wrapper {
-            width: 100%;
-            background: #fff;
-            border-radius: 5px;
-            box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
-        }
-
-        .wrapper .title {
-            height: 90px;
-            background: #00394f ;
-            border-radius: 5px 5px 0 0;
-            color: #fff;
-            font-size: 30px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .wrapper form {
-            padding: 30px 25px 25px 25px;
-        }
-
-        .wrapper form .row {
-            height: 45px;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .wrapper form .row input {
-            height: 100%;
-            width: 100%;
-            outline: none;
-            padding-left: 60px;
-            border-radius: 5px;
-            border: 1px solid lightgrey;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        form .row input:focus {
-            border-color: #00394f ;
-            box-shadow: inset 0px 0px 2px 2px #00394f ;
-        }
-
-        form .row input::placeholder {
-            color: #999;
-        }
-
-        .wrapper form .row i {
-            position: absolute;
-            width: 47px;
-            height: 100%;
-            color: #fff;
-            font-size: 18px;
-            background: #00394f ;
-            border: 1px solid #00394f ;
-            border-radius: 5px 0 0 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .wrapper form .pass {
-            margin: -8px 0 20px 0;
-        }
-
-        .wrapper form .pass a {
-            color: #00394f ;
-            font-size: 17px;
-            text-decoration: none;
-        }
-
-        .wrapper form .pass a:hover {
-            text-decoration: underline;
-        }
-
-        .wrapper form .button input {
-            color: #fff;
-            font-size: 20px;
-            font-weight: 500;
-            padding-left: 0px;
-            background: #00394f ;
-            border: 1px solid #00394f ;
-            cursor: pointer;
-        }
-
-        form .button input:hover {
-            background: #00394f ;
-        }
-
-        .wrapper form .signup-link {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 17px;
-        }
-        .forgot-password-div {
-            padding-bottom: 10px;
-            display: flex;
-            justify-content: center;
-        }
-        .forgot-password {
-            text-decoration: none;
-        }
-
-    </style>
-@endsection
 
 @section('content')
-    <div class="main-container container">
-        <div class="wrapper">
-            <div class="title"><span>Reset Password</span></div>
-            <form method="POST" id="reset-password-form">
-                @csrf
-                <div class="row">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" name="password" id="password" required>
-                    <input type="hidden" name="email" value="{{ request()->email }}" id="email">
+    <div class="auth-wrapper auth-cover">
+        <div class="auth-inner row m-0">
+            <!-- Brand logo--><a class="brand-logo" href="{{ route('login.view') }}">
+                <svg viewBox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" height="28">
+                    <defs>
+                        <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%"
+                            y2="89.4879456%">
+                            <stop stop-color="#000000" offset="0%"></stop>
+                            <stop stop-color="#FFFFFF" offset="100%"></stop>
+                        </lineargradient>
+                        <lineargradient id="linearGradient-2" x1="64.0437835%" y1="46.3276743%" x2="37.373316%"
+                            y2="100%">
+                            <stop stop-color="#EEEEEE" stop-opacity="0" offset="0%"></stop>
+                            <stop stop-color="#FFFFFF" offset="100%"></stop>
+                        </lineargradient>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Artboard" transform="translate(-400.000000, -178.000000)">
+                            <g id="Group" transform="translate(400.000000, 178.000000)">
+                                <path class="text-primary" id="Path"
+                                    d="M-5.68434189e-14,2.84217094e-14 L39.1816085,2.84217094e-14 L69.3453773,32.2519224 L101.428699,2.84217094e-14 L138.784583,2.84217094e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L6.71554594,44.4188507 C2.46876683,39.9813776 0.345377275,35.1089553 0.345377275,29.8015838 C0.345377275,24.4942122 0.230251516,14.560351 -5.68434189e-14,2.84217094e-14 Z"
+                                    style="fill: currentColor"></path>
+                                <path id="Path1"
+                                    d="M69.3453773,32.2519224 L101.428699,1.42108547e-14 L138.784583,1.42108547e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L32.8435758,70.5039241 L69.3453773,32.2519224 Z"
+                                    fill="url(#linearGradient-1)" opacity="0.2"></path>
+                                <polygon id="Path-2" fill="#000000" opacity="0.049999997"
+                                    points="69.3922914 32.4202615 32.8435758 70.5039241 54.0490008 16.1851325">
+                                </polygon>
+                                <polygon id="Path-21" fill="#000000" opacity="0.099999994"
+                                    points="69.3922914 32.4202615 32.8435758 70.5039241 58.3683556 20.7402338">
+                                </polygon>
+                                <polygon id="Path-3" fill="url(#linearGradient-2)" opacity="0.099999994"
+                                    points="101.428699 0 83.0667527 94.1480575 130.378721 47.0740288">
+                                </polygon>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <h2 class="brand-text text-primary ms-1">{{ env('APP_NAME') }}</h2>
+            </a>
+            <!-- /Brand logo-->
+            <!-- Left Text-->
+            <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
+                <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid"
+                        src="{{ asset('app-assets') }}/images/pages/login-v2.svg" alt="Login V2" /></div>
+            </div>
+            <!-- /Left Text-->
+            <!-- Login-->
+            <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
+                    <h2 class="card-title fw-bold mb-1">Welcome to {{ env('APP_NAME') }}! 👋</h2>
+                    <h3 class="card-text mb-2">Reset Password</h3>
+                    <div class="">
+                        {{ view('app.layout.alerts') }}
+                    </div>
+                    @if (Session::has('message-login'))
+                        <div class="alert alert-danger alert-dismissible " style="font-size:15px;">
+                            {{ Session::get('message-login') }}
+                        </div>
+                    @endif
+                    @if (Session::has('passwordChanged'))
+                        <div class="alert alert-success alert-dismissible " style="font-size:15px;">
+                            {{ Session::get('passwordChanged') }}
+                        </div>
+                    @endif
+                    <form method="POST" action="{{ route('password.reset') }}">
+                        @csrf
+                        <div class="mb-1">
+                            <input type="hidden" name="email" value="{{ request()->email }}" id="email">
+
+                            <label class="form-label" for="login-email">Password</label>
+                            <div class="input-group input-group-merge form-password-toggle">
+                                <input class="form-control form-control-lg form-control-merge"
+                                    type="password" placeholder="············" name="password"
+                                    aria-describedby="login-password" tabindex="2" id="confirm_password" required />
+                                <span class="input-group-text cursor-pointer">
+                                    <i data-feather="eye"></i>
+                                </span>
+
+                            </div>
+                            <label class="form-label mt-2" for="login-email">Confirm Password</label>
+                            <div class="input-group input-group-merge form-password-toggle">
+
+                                <input class="form-control form-control-lg form-control-merge"
+                                    type="password" placeholder="············"
+                                    aria-describedby="login-password" tabindex="2" id="confirm_password" name="confirm_password" required />
+                                <span class="input-group-text cursor-pointer">
+                                    <i data-feather="eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row button" style="margin-bottom: 10px !important;">
+                            <button type="submit" class="btn btn-primary w-100" tabindex="4">Reset</button>
+                        </div>
+                    </form>
+
                 </div>
-                <div class="row">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Confirm Password" id="confirm_password" name="confirm_password" required>
-                </div>
-                <div class="row button" style="margin-bottom: 10px !important;">
-                    <input type="submit" value="Reset" id="reset-btn">
-                </div>
-            </form>
+            </div>
+            <!-- /Login-->
         </div>
     </div>
 @endsection
 
-@section('footer-scripts')
-<script>
-    $( document ).on( 'click', '#reset-btn', function (e) {
-        e.preventDefault();
-
-        let custom_validation_message_array = [];
-        let required_field_array = [];
-        let email = $('#email').val();
-        let password = $('#password').val();
-        let confirm_password = $('#confirm_password').val();
-
-        let data = {
-            'password': password ?? null,
-            'confirm_password': confirm_password ?? null
-        };
-        for (const key in data) {
-            if ( data[key] == []) {
-                required_field_array.push(key);
-            }
-        }
-        if (required_field_array.length > 0) {
-            for (let i = 1; i < required_field_array.length; i++) {
-                if (required_field_array[i].includes('password')) {
-                    custom_validation_message_array.push("Password");
-                }
-                if (required_field_array[i].includes('confirm_password')) {
-                    custom_validation_message_array.push("Confirm Password");
-                }
-            }
-            for (let j = 0; j < custom_validation_message_array.length; j++) {
-                toastr.error(custom_validation_message_array[j] + " is required");
-            }
-        }
-        else if( password.length>0 && confirm_password.length>0 ) {
-            if( password != confirm_password ) {
-                toastr.error( "Confirm Password is incorrect" );
-            }
-            else
-            {
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('password.reset') }}",
-                    data: {
-                        _token : "{{ csrf_token() }}",
-                        email:email,
-                        password: password
-
-                    },
-                    success: function (response) {
-                        if(response.status) {
-                            toastr.success("Password Changed Successfully");
-                            $('#password').val('');
-                            $('#confirm_password').val('');
-                            $('#reset-btn').attr('disabled', true);
-                            setTimeout(() => {
-                                let redirectTo = "<?php echo route('tutor.login.view') ?>";
-                                window.location.href=redirectTo;
-                            }, 1500);
-                        }
-                    }
-                });
-            }
-        }
-
-
-    } );
-</script>
-@endsection

@@ -37,13 +37,9 @@ class ForgotPasswordController extends Controller
     {
         $token_validity = $this->forgot_password->tokenValidation( $email, $token );
         if( !is_null( $token_validity ) && !empty( $token_validity ) && is_object($token_validity) )
-        {
             return view('app.forgot.reset');
-        }
         else
-        {
-            return to_route('tutor.login.view')->withDanger('wrong', 'Invalid Token');
-        }
+            return to_route('login.view')->withDanger('Invalid Token');
     }
 
     public function resetPassword ( Request $request )
@@ -51,10 +47,12 @@ class ForgotPasswordController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         $confirm_password = $request->input('confirm_password');
-
-        $user = User::whereEmail($email)->first();
-        $user->password = Hash::make($password);
-        $user->save();
-        return apiSuccessResponse();
+        if( $password == $confirm_password )
+        {
+            resetPassword($email,$password);
+            return to_route('login.view')->withSuccess('Password Updated Successfully');
+        }
+        else
+            return redirect()->back()->withDanger("Password and Confirm Password is not matching");
     }
 }

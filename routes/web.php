@@ -33,6 +33,7 @@ Route::group([
         Route::post('store-user','store')->name('user.store');
         Route::get('check-otp', 'checkOTP')->name('check.otp');
         Route::get('complate-user-registration', 'completeRegistration')->name('complete.user.registration');
+        Route::post('user-login','login')->name('user.login');
     } );
 
     Route::controller( ForgotPasswordController::class )->group( function () {
@@ -42,16 +43,8 @@ Route::group([
         Route::post('change-password', 'resetPassword')->name('password.reset');
     } );
 
-    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('auth');
     Route::get('cachew/flush', [DashboardController::class, 'cacheFlush'])->name('cache.flush');
 
-    Route::controller(CategoryController::class)->prefix('admin/category')->group(function(){
-        Route::get('index','index')->name('categories');
-        Route::get('create/{id?}', 'create')->name('category.createOrEdit');
-        Route::post('storeOrUpdate', 'storeOrUpdate')->name('category.storeOrUpdate');
-        Route::get('getImage', 'getImage')->name('category.image');
-        Route::get('details','categoryDetails')->name('category.details');
-        Route::get('delete', 'delete')->name('category.delete');
-    });
 });
 
