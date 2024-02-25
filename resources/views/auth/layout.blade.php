@@ -39,6 +39,9 @@
     <!-- END: Page CSS-->
 
     <style>
+        .alert-danger {
+            padding: 10px;
+        }
     </style>
     @yield('my-css')
 </head>

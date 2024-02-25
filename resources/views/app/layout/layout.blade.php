@@ -12,15 +12,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
-    <meta name="description"
-        content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords"
-        content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="PIXINVENT">
+
     @yield('seo-breadcrumb')
 
     <title>@yield('page-title') - {{ env('APP_NAME') }}</title>
-    <link rel="apple-touch-icon" href="{{ asset('app-assets') }}/images/ico/apple-icon-120.html">
+    {{-- <link rel="apple-touch-icon" href="{{ asset('app-assets') }}/images/ico/apple-icon-120.html"> --}}
+    <link rel="shortcut icon" type="image/x-icon" href="http://127.0.0.1:8000/app-assets/images/rental/icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets') }}/images/ico/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

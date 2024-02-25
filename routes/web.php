@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Notifications\SendOTPNotification;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Stevebauman\Location\Facades\Location;
 
 /*
@@ -48,3 +49,6 @@ Route::group([
 
 });
 
+Route::get('send',function(){
+    dd( Hash::make('password') );
+});

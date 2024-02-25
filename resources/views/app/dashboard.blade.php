@@ -134,20 +134,24 @@
         .link_icon ul li span {
             color: #8494a8 !important;
         }
+
         .pay_frame_info {
             cursor: pointer;
         }
+
         .text_green {
-    color: green;
-}
-.text_red {
-    color: red;
-}
-.pay_heading i {
-    font-size: 20px !important;
-    color: #000 !important;
-    margin-bottom: 3px !important;
-}
+            color: green;
+        }
+
+        .text_red {
+            color: red;
+        }
+
+        .pay_heading i {
+            font-size: 20px !important;
+            color: #000 !important;
+            margin-bottom: 3px !important;
+        }
     </style>
 @endsection
 
@@ -173,7 +177,7 @@
                                 <div class="pay_info pay_frame_info" data-section="booking,fleet">
                                     <span class="pay_title">Active</span>
                                     <span class="pay_bill get-u-data text_green active-booking"
-                                        id="active-booking">270</span>
+                                        id="active-booking">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info" data-section="booking,fleet">
                                     <span class="pay_title">Not Confirm</span>
@@ -204,16 +208,16 @@
                             <div class="box_row">
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">In-Queue</span>
-                                    <span class="pay_bill get-u-data text_red inqu-dd" id="inqu-dd">2</span>
+                                    <span class="pay_bill get-u-data text_red inqu-dd" id="inqu-dd">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">In Progress</span>
-                                    <span class="pay_bill get-u-data text_green inpro-dd" id="inpro-dd">2</span>
+                                    <span class="pay_bill get-u-data text_green inpro-dd" id="inpro-dd">0</span>
                                 </div>
 
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">Dishonored</span>
-                                    <span class="pay_bill get-u-data text_red dis-dd" id="dishonored-dd">25</span>
+                                    <span class="pay_bill get-u-data text_red dis-dd" id="dishonored-dd">0</span>
                                 </div>
 
                                 <div class="pay_info pay_frame_info">
@@ -222,7 +226,7 @@
                                 </div>
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">Settled</span>
-                                    <span class="pay_bill get-u-data text_green settled-dd" id="settled-dd">120</span>
+                                    <span class="pay_bill get-u-data text_green settled-dd" id="settled-dd">0</span>
                                 </div>
 
                             </div>
@@ -234,19 +238,19 @@
                             <div class="box_row">
                                 <div class="pay_info pay_frame_info" data-section="booking,fleet">
                                     <span class="pay_title">Active</span>
-                                    <span class="pay_bill get-u-data text_green total-car-css" id="total-cars">292</span>
+                                    <span class="pay_bill get-u-data text_green total-car-css" id="total-cars">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info" data-section="booking,fleet">
                                     <span class="pay_title">InActive</span>
-                                    <span class="pay_bill get-u-data text_green total-car-css" id="total-in-active">1</span>
+                                    <span class="pay_bill get-u-data text_green total-car-css" id="total-in-active">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info" data-section="booking,fleet">
                                     <span class="pay_title">Available</span>
-                                    <span class="pay_bill get-u-data text_red total-avb-css" id="available-cars">25</span>
+                                    <span class="pay_bill get-u-data text_red total-avb-css" id="available-cars">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info" data-section="booking,fleet">
                                     <span class="pay_title">Expiry/s</span>
-                                    <span class="pay_bill get-u-data total-exp-css" id="exp-all">2</span>
+                                    <span class="pay_bill get-u-data total-exp-css" id="exp-all">0</span>
                                 </div>
 
                                 <div class="pay_info pay_frame_info" data-section="booking,fleet">
@@ -267,11 +271,11 @@
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">Active</span>
                                     <span class="pay_bill get-u-data text_red total-customer-css"
-                                        id="active-customer">270</span>
+                                        id="active-customer">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">New</span>
-                                    <span class="pay_bill get-u-data total-customer-css" id="new-customer">1</span>
+                                    <span class="pay_bill get-u-data total-customer-css" id="new-customer">0</span>
                                 </div>
 
                                 <div class="pay_info pay_frame_info">
@@ -293,22 +297,22 @@
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">19 Feb - 25 Feb</span>
                                     <span class="pay_bill get-u-data invoice-week"
-                                        id="invoice-week-total-2024-02-25">9,624</span>
+                                        id="invoice-week-total-2024-02-25">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">12 Feb - 18 Feb</span>
                                     <span class="pay_bill get-u-data invoice-week"
-                                        id="invoice-week-total-2024-02-18">84,048</span>
+                                        id="invoice-week-total-2024-02-18">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">05 Feb - 11 Feb</span>
                                     <span class="pay_bill get-u-data invoice-week"
-                                        id="invoice-week-total-2024-02-11">78,087</span>
+                                        id="invoice-week-total-2024-02-11">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">29 Jan - 04 Feb</span>
                                     <span class="pay_bill get-u-data invoice-week"
-                                        id="invoice-week-total-2024-02-04">77,036</span>
+                                        id="invoice-week-total-2024-02-04">0</span>
                                 </div>
 
 
@@ -326,27 +330,27 @@
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">19 Feb - 25 Feb</span>
                                     <span class="pay_bill get-u-data invoice-week"
-                                        id="invoice-week-bal-2024-02-25">9,334</span>
+                                        id="invoice-week-bal-2024-02-25">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">12 Feb - 18 Feb</span>
                                     <span class="pay_bill get-u-data invoice-week"
-                                        id="invoice-week-bal-2024-02-18">44,775</span>
+                                        id="invoice-week-bal-2024-02-18">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">05 Feb - 11 Feb</span>
                                     <span class="pay_bill get-u-data invoice-week"
-                                        id="invoice-week-bal-2024-02-11">38,561</span>
+                                        id="invoice-week-bal-2024-02-11">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">29 Jan - 04 Feb</span>
                                     <span class="pay_bill get-u-data invoice-week"
-                                        id="invoice-week-bal-2024-02-04">42,016</span>
+                                        id="invoice-week-bal-2024-02-04">0</span>
                                 </div>
 
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">All Over</span>
-                                    <span class="pay_bill get-u-data all-bal" id="all-over-balance">1,191,773</span>
+                                    <span class="pay_bill get-u-data all-bal" id="all-over-balance">0</span>
                                 </div>
 
 
@@ -363,11 +367,11 @@
 
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">All</span>
-                                    <span class="pay_bill get-u-data text_red total-car-css" id="total-diary">4</span>
+                                    <span class="pay_bill get-u-data text_red total-car-css" id="total-diary">0</span>
                                 </div>
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">Pending</span>
-                                    <span class="pay_bill get-u-data total-car-css" id="diary-pending">4</span>
+                                    <span class="pay_bill get-u-data total-car-css" id="diary-pending">0</span>
                                 </div>
 
                                 <div class="pay_info pay_frame_info">
@@ -381,7 +385,7 @@
                                 </div>
                                 <div class="pay_info pay_frame_info">
                                     <span class="pay_title">FollowUp</span>
-                                    <span class="pay_bill get-u-data total-exp-css" id="diary-followup">2</span>
+                                    <span class="pay_bill get-u-data total-exp-css" id="diary-followup">0</span>
                                 </div>
 
                             </div>
@@ -389,13 +393,13 @@
                         </div>
 
                         <!-- <div class="payment_box" id="images-section">
-                            <h4 class="pay_heading"><i class="fa fa-picture-o" aria-hidden="true"></i><span>Recent Images</span></h4>
-                            <div class="recent_images">
+                                <h4 class="pay_heading"><i class="fa fa-picture-o" aria-hidden="true"></i><span>Recent Images</span></h4>
+                                <div class="recent_images">
 
 
-                            </div>
+                                </div>
 
-                          </div> -->
+                              </div> -->
                     </div>
                     <div class="center_contant" id="f-result">
 
@@ -459,92 +463,92 @@
 @endsection
 
 @section('custom-js')
-<script type="text/javascript">
-    $(document).ready(function(){
-        // Activate tooltip
-        $('[data-toggle="tooltip"]').tooltip();
 
+    <script src="{{ asset('app-assets') }}/js/dashboard.js"></script>
 
-    });
-    </script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            // Activate tooltip
-            $('[data-toggle="tooltip"]').tooltip();
+        $(document).ready(function() {
+
+            // $(document).ready(function() {
+                // Activate tooltip
+                $('[data-toggle="tooltip"]').tooltip();
+            // });
+            var previousWeeks = jQuery.parseJSON(
+                '[{"start_date":"2024-02-19","end_date":"2024-02-25"},{"start_date":"2024-02-12","end_date":"2024-02-18"},{"start_date":"2024-02-05","end_date":"2024-02-11"},{"start_date":"2024-01-29","end_date":"2024-02-04"}]'
+                );
+            setInvoiceDateIds(previousWeeks);
+            getDashboardData('booking');
+
+            setTimeout(function() {
+                getDashboardData('fleet');
+            }, 300);
+
+            setTimeout(function() {
+                getDashboardData('customer');
+            }, 500);
+
+            setTimeout(function() {
+                getDashboardData('direct-debit');
+            }, 700);
 
 
-        });
-        </script>
-        <script src="dashboard.min.js?v=1.4"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-               var previousWeeks=jQuery.parseJSON('[{"start_date":"2024-02-19","end_date":"2024-02-25"},{"start_date":"2024-02-12","end_date":"2024-02-18"},{"start_date":"2024-02-05","end_date":"2024-02-11"},{"start_date":"2024-01-29","end_date":"2024-02-04"}]');
-               setInvoiceDateIds(previousWeeks);
-               getDashboardData('booking');
+            setTimeout(function() {
+                getDashboardData('invoices', {
+                    'dates': previousWeeks
+                });
+            }, 900);
 
-               setTimeout(function() {
-                     getDashboardData('fleet');
-                   }, 300);
+            setTimeout(function() {
+                getDashboardData('Diary');
+            }, 1100);
 
-                   setTimeout(function() {
-                     getDashboardData('customer');
-                   }, 500);
+            function setInvoiceDateIds(previousWeeks) {
+                var jsonObject = {};
+                if (previousWeeks.length > 0) {
+                    for (var i = 0; i < previousWeeks.length; i++) {
+                        var endDate = previousWeeks[i].end_date ?? '';
+                        var key = 'invoice-week-total-' + endDate;
+                        var keyone = 'invoice-week-bal-' + endDate;
+                        var value = {
+                            fun: 'callChildFunction',
+                            id: {
+                                id: 'main_ids_get',
+                                callback: 'get_searched_items'
+                            }
+                        };
+                        jsonObject[key] = value;
+                        jsonObject[keyone] = value;
+                    }
+                    myObject = Object.assign(myObject, jsonObject);
+                }
 
-                   setTimeout(function() {
-                     getDashboardData('direct-debit');
-                   }, 700);
-
-
-                   setTimeout(function() {
-                     getDashboardData('invoices',{'dates':previousWeeks});
-                   }, 900);
-
-                   setTimeout(function() {
-                     getDashboardData('Diary');
-                   }, 1100);
-
-                   function setInvoiceDateIds(previousWeeks) {
-                      var jsonObject = {};
-                       if (previousWeeks.length > 0) {
-                           for (var i = 0; i < previousWeeks.length; i++) {
-                             var endDate=previousWeeks[i].end_date ?? '';
-                             var key='invoice-week-total-'+endDate;
-                             var keyone='invoice-week-bal-'+endDate;
-                             var value = {fun: 'callChildFunction',id: {id: 'main_ids_get',callback: 'get_searched_items'}};
-                           jsonObject[key] = value;
-                           jsonObject[keyone] = value;
-                           }
-                           myObject = Object.assign(myObject, jsonObject);
-                       }
-
-                   }
-
-
-           });
-
-
-             check_new_message_run = 0;
-             setTimeout(function() {
-               if(check_new_message_run == 1)
-               {
-                 Check_new_message();
-               }
-             }, 5000);
-
-
-             function Check_new_message(){
-                 $.ajax({
-                     type: 'POST',
-                     url: 'dashboard-ajax.php',
-                     data: {action:'Check_new_message'},
-                     success: function (response) {
-                       console.log(response);
-                       // $("#CompanyNum").text(response);
-
-                     }
-                 })
             }
 
 
-            </script>
+        });
+
+
+        check_new_message_run = 0;
+        setTimeout(function() {
+            if (check_new_message_run == 1) {
+                Check_new_message();
+            }
+        }, 5000);
+
+
+        function Check_new_message() {
+            $.ajax({
+                type: 'POST',
+                url: 'dashboard-ajax.php',
+                data: {
+                    action: 'Check_new_message'
+                },
+                success: function(response) {
+                    console.log(response);
+                    // $("#CompanyNum").text(response);
+
+                }
+            });
+        }
+    </script>
 @endsection
