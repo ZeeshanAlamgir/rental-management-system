@@ -31,6 +31,7 @@ return new class extends Migration
             $table->foreignId('membership_id')->constrained();
             $table->foreignId('category_id')->constrained();
             $table->foreignId('staff_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
